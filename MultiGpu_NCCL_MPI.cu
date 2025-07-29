@@ -102,7 +102,7 @@ public:
         CUDA_CHECK(cudaGetDeviceCount(&num_gpus));
         num_gpus = min(num_gpus, 2);
         
-        cout << "🔥🔥🔥 EXTREME GPU MEMORY STRESS TEST 🔥🔥🔥" << endl;
+        cout << "EXTREME GPU MEMORY STRESS TEST" << endl;
         
         // Calculate sizes based on available GPU memory
         calculateOptimalSizes();
@@ -125,7 +125,7 @@ public:
     }
 
     void extremeTrainingStep() {
-        cout << "🔥🔥🔥 EXTREME COMPUTATION STEP 🔥🔥🔥" << endl;
+        cout << " EXTREME COMPUTATION STEP " << endl;
         
         // Generate and load massive amounts of data
         vector<float> h_input(batch_size * input_size);
@@ -181,7 +181,7 @@ public:
     }
     
     void printExtremeGPUStatus() {
-        cout << "\n🔥🔥🔥 EXTREME GPU STATUS 🔥🔥🔥" << endl;
+        cout << "\nEXTREME GPU STATUS " << endl;
         for (int i = 0; i < num_gpus; i++) {
             CUDA_CHECK(cudaSetDevice(device_ids[i]));
             size_t free_mem, total_mem;
@@ -193,7 +193,7 @@ public:
             size_t used_mem = total_mem - free_mem;
             float mem_percent = (float)used_mem / total_mem * 100.0f;
             
-            cout << "  🔥 GPU " << i << " (" << prop.name << "):" << endl;
+            cout << "   GPU " << i << " (" << prop.name << "):" << endl;
             cout << "     Memory: " << used_mem / (1024*1024) << "/" 
                  << total_mem / (1024*1024) << " MB (" << fixed << setprecision(1) 
                  << mem_percent << "%)" << endl;
@@ -567,14 +567,14 @@ int main() {
             cout << "🌡️  Check nvidia-smi now - both GPUs should be at 95%+ utilization!" << endl;
         }
         
-        cout << "\n🎉🎉🎉 EXTREME GPU STRESS TEST COMPLETED! 🎉🎉🎉" << endl;
+        cout << "\nEXTREME GPU STRESS TEST COMPLETED!" << endl;
         cout << "Your GPUs should have been running at maximum capacity!" << endl;
         
         // Final status report
         stressor.printExtremeGPUStatus();
         
     } catch (const exception& e) {
-        cerr << "❌ Error: " << e.what() << endl;
+        cerr << "Error: " << e.what() << endl;
         return -1;
     }
     
